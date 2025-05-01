@@ -3,8 +3,9 @@
 ### Carrera de Ingeniería en Software  
 
 **Asignatura:** Manejo y Configuración de Software  
-**Nombre del Estudiante:** ___________________________  
-**Fecha:** ___________________  
+**Nombre del Estudiante:** Maybelline Navarro
+
+**Fecha:** 30 de abril del 2025
 
 ---
 
@@ -40,6 +41,58 @@
 
 <!-- Escribe aquí tu respuesta a la Pregunta 1 -->
 
+Diferencias entre los conceptos:
+- Git clone es un comando que permite copiar un repositorio remoto (como uno alojado en GitHub) directamente al equipo local. Al ejecutar git clone, se descarga todo el contenido del repositorio, incluyendo los archivos, el historial de cambios y las ramas, y se configura automáticamente el repositorio remoto con el nombre origin.
+
+- Fork es una acción que se realiza desde la plataforma de GitHub y permite crear una copia del repositorio original dentro de la cuenta personal del usuario. Esta copia puede ser modificada sin afectar el proyecto original, y es el punto de partida para realizar propuestas de mejora mediante pull requests.
+
+- Git pull es un comando que permite traer (desde el repositorio remoto) y combinar automáticamente los últimos cambios a la rama activa del repositorio local. Se usa para mantener el repositorio local actualizado respecto al remoto.
+
+# Parte práctica:
+## ¿Cómo se realizó el fork?
+Para realizar el fork, se ingresó al repositorio original alojado en la cuenta de GitHub del usuario santiagojara. Una vez dentro del repositorio, hizo clic en el botón “Fork”, ubicado en la parte superior derecha de la interfaz. GitHub mostró una pantalla para confirmar el destino del fork, y se seleccionó su cuenta personal: M4yb33. Automáticamente, GitHub creó una copia exacta del repositorio dentro del perfil personal.
+
+Como resultado, el nuevo repositorio forkeado quedó disponible en la siguiente URL:
+
+https://github.com/M4yb33/nombre-del-repositorio.git
+
+## ¿Cómo se realizó el clone del fork?
+
+Con el fork ya creado en su cuenta, se ingresó al repositorio forkeado (M4yb33/nombre-del-repositorio) y presionó el botón “Code”. Desde ahí, se copió la URL HTTPS proporcionada. Luego, en su equipo local, abrió la terminal (Git Bash) y ejecutó el siguiente comando para clonar el repositorio:
+
+git clone https://github.com/M4yb33/nombre-del-repositorio.git
+
+Este comando descargó todos los archivos y el historial del repositorio forkeado a su máquina local, dentro de una carpeta con el mismo nombre del repositorio.
+
+## ¿Cómo se verificó que se estaba trabajando sobre el fork y no sobre el repositorio original?
+
+Después de clonar el fork, se ingresó en la carpeta del proyecto y ejecutó:
+
+cd nombre-del-repositorio
+
+git remote -v
+
+La salida del comando mostró que el repositorio remoto (origin) apuntaba al usuario M4yb33, y no a santiagojara. Por ejemplo:
+
+origin  https://github.com/M4yb33/nombre-del-repositorio.git (fetch)
+origin  https://github.com/M4yb33/nombre-del-repositorio.git (push)
+
+Esto confirmó que estaba trabajando sobre el fork personal, y no directamente sobre el repositorio original.
+
+
+
+## 📷 Evidencia del Fork y Clonación
+
+### 🔹 Fork realizado a la cuenta M4yb33:
+![Fork en GitHub](imagenes/ImagenFork.png)
+
+### 🔹 Verificación del clonado:
+![Git remote -v](imagenes/ImagenClone.png)
+
+### 🔹 Verificación del clone con el remote:
+![Git remote -v](imagenes/Imagenremote.png)
+
+
 ---
 
 ## Pregunta 2 (1 punto)
@@ -58,6 +111,23 @@
 - Solo el **segundo commit** debe llevar el **tag `"Pregunta 2"`**.
 
 **📝 Respuesta:**
+
+Para esta actividad, configuré un archivo .gitignore que permite excluir ciertos archivos y carpetas del control de versiones de Git. Esto es muy útil para evitar subir archivos temporales o sensibles que no deben compartirse en el repositorio.
+
+El archivo .gitignore tiene la función de excluir archivos y carpetas específicas del control de versiones de Git. Esto significa que cualquier archivo o directorio listado dentro de .gitignore no será rastreado, añadido, ni enviado al repositorio remoto, incluso si existe en la carpeta del proyecto local.
+
+En este caso, configuré .gitignore para ignorar todos los archivos con extensión .log y cualquier carpeta llamada temp/. Esto es útil para evitar subir archivos de registro generados automáticamente y carpetas temporales que no forman parte del código fuente del proyecto.
+
+
+
+### 🔹 Evidencia del archivo .gitignore 
+![Git remote -v](imagenes/Capturagitignore.png)
+
+### 🔹 Evidencia del .gitignore en bash:
+![Git remote -v](imagenes/CapturaCommitgitignore.png)
+
+### 🔹 Captura del segundo commit conjuntamente con su etiqueta de Pregunta2:
+![Git remote -v](imagenes/CapturaSegundoCommityEtiqueta.png)
 
 <!-- Escribe aquí tu explicación y evidencia para la Pregunta 2 -->
 
@@ -88,6 +158,55 @@
 - El flujo debe respetar la estructura de Git Flow con las ramas `develop` y `main`.
 
 **📝 Respuesta:**
+
+## 1. Inicializar Git Flow en el proyecto
+git flow init
+
+(Presiona Enter en cada paso y acepta los nombres por defecto: main y develop)
+
+## 2. Crear la rama de la funcionalidad (feature)
+git flow feature start ingresar-encabezado
+
+## 3. Editar el archivo README.md 
+Agregar encabezado con datos
+
+## 4. Agregar los cambios al área de staging
+git add README.md
+
+## 5. Realizar un commit con descripción larga
+git commit -m "Agrego encabezado con mis datos personales al README.md" -m "Se completó el encabezado con información del estudiante como parte de la feature ingresar-encabezado."
+
+
+## 6. Finalizar la feature y unirla a develop
+git flow feature finish ingresar-encabezado
+
+## 7. Subir los cambios a la rama develop del repositorio remoto
+git push origin develop
+
+## 8. Crear la etiqueta solicitada
+git tag -a "Pregunta 3" -m "Respuesta a la Pregunta 3"
+git push origin --tags
+
+
+## Descripción del proceso:
+Primero, inicialicé el repositorio con Git Flow usando git flow init, aceptando las ramas por defecto (main como rama de producción y develop como rama de integración).
+
+Luego, creé una rama de tipo feature llamada ingresar-encabezado desde develop. En esa rama, edité el archivo README.md para completar el encabezado con mis datos personales como estudiante. Después de hacer al menos un commit con estos cambios, finalicé la feature con el comando git flow feature finish ingresar-encabezado.
+
+Este comando hizo el merge automático de la feature en develop y eliminó la rama local de la feature. Finalmente, subí los cambios de la rama develop al repositorio remoto en GitHub.
+
+## Reflexión sobre Git Flow:
+El uso de Git Flow me permitió organizar el proceso de desarrollo de manera clara y ordenada. Al trabajar en una rama feature, pude aislar mis cambios sin afectar la rama principal del proyecto. Esto es especialmente útil en proyectos colaborativos, donde cada desarrollador puede trabajar en su propia funcionalidad sin interferir con el trabajo de los demás.
+
+Además, Git Flow facilita el seguimiento del estado de las funcionalidades: cuándo se crean, cuándo se terminan y cuándo se integran. En proyectos grandes o de larga duración, esta estructura evita muchos errores y ayuda a mantener un historial limpio y comprensible.
+
+### 🔹 Captura desde la inicializacion del git flow hasta la finalización de la rama feature conocida como ingresar-encabezado:
+![Git remote -v](imagenes/gitflowpregunta3.1.png)
+### 🔹 Captura del segundo commit conjuntamente con su etiqueta de Pregunta2:
+![Git remote -v](imagenes/gitflowpregunta3.2.png)
+
+### 🔹 Captura del tag de la pregunta 3:
+![Git remote -v](imagenes/gittagpregunta3.png)
 
 <!-- Escribe aquí tu respuesta completa a la Pregunta 3 -->
 
@@ -123,6 +242,40 @@
 **📝 Respuesta:**
 
 <!-- Escribe aquí tu respuesta completa a la Pregunta 4 -->
+
+## Issue
+Un issue en GitHub es una herramienta que permite registrar tareas, errores, mejoras o preguntas relacionadas con un proyecto. Sirve como un mecanismo de seguimiento de trabajo y comunicación entre los colaboradores del repositorio.
+
+## Pull request
+Un pull request (PR) es una solicitud de incorporación de cambios. Permite proponer modificaciones hechas en una rama (por ejemplo, develop) para que sean revisadas y fusionadas en otra rama (por ejemplo, main). Un PR puede incluir discusión, revisión de código y aprobaciones antes de aceptar los cambios.
+
+## Diferencias
+La diferencia principal es que el issue representa una tarea o necesidad a resolver, mientras que el pull request representa la solución propuesta para ese issue. Ambos se complementan: un desarrollador abre un issue para reportar o documentar algo, y luego otro (o el mismo) puede resolverlo mediante un pull request que referencia y cierra ese issue automáticamente.
+
+#### Parte práctica
+
+**Resumen del procedimiento realizado:**
+
+1. Me situé en la rama `develop` con el comando:  
+   `git checkout develop`
+
+2. Creé un *issue* en GitHub titulado **"Respuesta a la Pregunta 4"** con el objetivo de documentar esta pregunta.
+
+3. Edité el archivo `README.md` agregando esta respuesta.
+
+4. Guardé los cambios y los confirmé con:  
+   `git add README.md`  
+   `git commit -m "docs: respuesta a la Pregunta 4"`
+
+5. Subí los cambios al repositorio remoto:  
+   `git push origin develop`
+
+6. En GitHub, creé un *pull request* desde la rama `develop` hacia `main`.
+
+7. En la descripción del PR, agregué la frase `Closes #4` para vincular y cerrar el issue automáticamente cuando se fusione el PR.
+
+8. Verifiqué que el repositorio requiere revisión antes del merge, ya que GitHub muestra el mensaje:  
+
 
 ---
 
